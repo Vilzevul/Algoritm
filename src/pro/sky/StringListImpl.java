@@ -8,7 +8,7 @@ public class StringListImpl implements StringList {
     private final int delta = 1;
 
     private void resize() {
-        String[] newStringList = new String[stringList.length + 1];
+        String[] newStringList = new String[stringList.length + delta];
         for (int i = 0; i < stringList.length; i++) {
             newStringList[i] = stringList[i];
         }

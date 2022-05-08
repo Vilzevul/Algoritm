@@ -1,37 +1,68 @@
 package pro.sky;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
         // write your code here
         StringList arr = new StringListImpl();
-        String str;
-        arr.add("000");
-        arr.add("111");
-        arr.add("222");
-        arr.add("333");
-        arr.add("444");
-        arr.add("555");
-        arr.set(3,"Вместо 333");
-        arr.add(2, "121");
-        arr.remove(0);
-        arr.remove("444");
-//        arr.remove(6);
-//        arr.remove("777");
+        IntList num = new IntListImpl();
 
-        String[] copy = new String[arr.size()];
-        copy = arr.toArray();
+        SortMethods.init();
+num.add(5);
+num.add(7);
+num.add(3);
+        int[] copy = new int[num.size()];
 
-if(arr.contains("555")) System.out.println("Содержит 555");
-        System.out.println("Первый Индекс 333 " + arr.indexOf("333"));
-        System.out.println("Последний Индекс 222 " + arr.indexOf("222"));
-        System.out.println("Элемент по индексу 3 "+arr.get(3));
-if(arr.equals(arr)) System.out.println("Списки равны");
-        System.out.println("Размер списка " + arr.size());
-        if (arr.isEmpty()) System.out.println("список не пустой");
+        System.out.println(num.contains(3));
+        copy = num.toArray();
+        for (int i = 0; i < copy.length ; i++) {
+            System.out.print(copy[i]+" ");
+        }
+        System.out.println();
 
 
-        for (int i = 0; i < copy.length; i++)
-            System.out.println(copy[i]);
+        //3 sortInsertion
+
+        int[] insertion = Arrays.copyOf(SortMethods.intList,SortMethods.intList.length);
+        long startInsertion = System.currentTimeMillis();
+        SortMethods.sortInsertion(insertion);
+        long timerInsertion = System.currentTimeMillis() - startInsertion;
+        System.out.println("sortInsertion " + timerInsertion);
+
+
+        //1 sortBubble
+        int[] bubble = Arrays.copyOf(SortMethods.intList,SortMethods.intList.length);
+
+        long startBubble = System.currentTimeMillis();
+        SortMethods.sortBubble(bubble);
+        long timerBubble = System.currentTimeMillis() - startBubble;
+        System.out.println("sortBubble " + timerBubble);
+
+        //2 sortSelection
+
+        int[] selection = Arrays.copyOf(SortMethods.intList,SortMethods.intList.length);
+
+        long startSelection = System.currentTimeMillis();
+        SortMethods.sortSelection(selection);
+        long timerSelection = System.currentTimeMillis() - startSelection;
+        System.out.println("sortSelection " + timerSelection);
+
+
+        //4 sort
+        int[] sort;
+        sort = SortMethods.intList.clone();
+
+        long startSort = System.currentTimeMillis();
+        Arrays.sort(sort);
+        long timerSort = System.currentTimeMillis() - startSort;
+        System.out.println("Arrays.sort " + timerSort);
+
+
+
     }
+
 }
+
+
